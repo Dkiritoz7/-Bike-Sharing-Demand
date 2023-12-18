@@ -40,7 +40,7 @@ for name, reg in regs.items():
     if name == 'gbdt':
         reg.set_params(n_estimators=1000, min_samples_leaf=5)
     elif name == 'rf':
-        reg.set_params(n_estimators=1000, min_samples_leaf=2)
+        reg.set_params(n_estimators=900, min_samples_leaf=2)
     reg.fit(train[features], train['casual_log'])
     pred_casual = reg.predict(test[features])
     pred_casual = np.exp(pred_casual) - 1
@@ -50,9 +50,9 @@ for name, reg in regs.items():
                 'temp', 'atemp', 'humidity', 'windspeed', 'year', 'hour',
                 'dayofweek', 'hour_workingday_registered', 'count_season']
     if name == 'gbdt':
-        reg.set_params(n_estimators=1000, min_samples_leaf=6)
+        reg.set_params(n_estimators=1000, min_samples_leaf=8)
     elif name == 'rf':
-        reg.set_params(n_estimators=1000, min_samples_leaf=2)
+        reg.set_params(n_estimators=900, min_samples_leaf=2)
     reg.fit(train[features], train['registered_log'])
     pred_registered = reg.predict(test[features])
     pred_registered = np.exp(pred_registered) - 1
